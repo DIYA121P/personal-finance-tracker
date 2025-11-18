@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Finance Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- TOP RIGHT LOGIN/SIGNUP BAR -->
+    <div class="topbar">
+        <button onclick="showSection('login')" class="top-btn">Login</button>
+        <button onclick="showSection('signup')" class="top-btn">Sign Up</button>
+    </div>
+
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li onclick="showSection('dashboard')">🏠 Dashboard</li>
+            <li onclick="showSection('expenses')">💸 Add Expense</li>
+            <li onclick="showSection('view-expenses')">📄 View Expenses</li>
+            <li onclick="showSection('savings')">💰 Savings Goal</li>
+            <li onclick="showSection('profile')">👤 Profile</li>
+            <li onclick="showSection('fun')">🎉 Fun Zone</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section active">
+            <h1>Welcome to Your Finance Manager 🎯</h1>
+            <p>Track your money, control your spending, and reach your savings goals.</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Spent</h3>
+                    <p id="totalSpent">₹0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Transactions</h3>
+                    <p id="totalTransactions">0</p>
+                </div>
+                <div class="card">
+                    <h3>Savings Progress</h3>
+                    <p id="savingsProgress">0%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADD EXPENSE -->
+        <section id="expenses" class="section">
+            <h2>Add Expense</h2>
+            <input type="text" id="expName" placeholder="Expense Name">
+            <input type="number" id="expAmount" placeholder="Amount (₹)">
+            <button onclick="addExpense()">Add</button>
+            <p id="expMsg"></p>
+        </section>
+
+        <!-- VIEW EXPENSES -->
+        <section id="view-expenses" class="section">
+            <h2>All Expenses</h2>
+            <table id="expensesTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount (₹)</th>
+                        <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- SAVINGS -->
+        <section id="savings" class="section">
+            <h2>Set Savings Goal</h2>
+            <input type="number" id="goalInput" placeholder="Enter Goal (₹)">
+            <button onclick="setGoal()">Save Goal</button>
+            <p id="goalMsg"></p>
+        </section>
+
+        <!-- PROFILE -->
+        <section id="profile" class="section">
+            <h2>Your Behaviour Analysis 👤</h2>
+
+            <div class="card" style="margin-top:20px;">
+                <h3>Spending Personality</h3>
+                <p id="personalityText">Calculating...</p>
+            </div>
+
+            <div class="card" style="margin-top:20px;">
+                <h3>Weekly Spending Trend</h3>
+                <canvas id="weeklyChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- FUN -->
+        <section id="fun" class="section">
+            <h2>Fun Zone 🎉</h2>
+            <p id="funText">Click the button to get a fun finance fact!</p>
+            <button onclick="funFact()">Give Me Fun Fact</button>
+        </section>
+
+        <!-- LOGIN -->
+        <section id="login" class="section login-section">
+            <div class="login-box big-login">
+                <h2>Login</h2>
+                <input type="text" id="loginUser" placeholder="Username">
+                <input type="password" id="loginPass" placeholder="Password">
+                <button onclick="login()">Login</button>
+
+                <p style="margin-top:10px;">Don't have an account?</p>
+                <button onclick="showSection('signup')">Create Account</button>
+
+                <p id="loginMsg"></p>
+            </div>
+        </section>
+
+        <!-- SIGNUP -->
+        <section id="signup" class="section login-section">
+            <div class="login-box big-login">
+                <h2>Create Account</h2>
+                <input type="text" id="signUser" placeholder="Username">
+                <input type="password" id="signPass" placeholder="Password">
+                <button onclick="signup()">Register</button>
+                <button onclick="showSection('login')">Back to Login</button>
+                <p id="signupMsg"></p>
+            </div>
+        </section>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
